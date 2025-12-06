@@ -12,10 +12,11 @@ def get_ntfy_headers(seer_data: dict) -> dict:
     headers = {}
     subject_prefix = ""
 
+    print(seer_data.get("notification_type"))
     match seer_data.get("notification_type"):
         case "MEDIA_AVAILABLE":
             subject_prefix = "Media available: "
-        case "MEDIA_APPROVED", "MEDIA_AUTO_APPROVED":
+        case "MEDIA_APPROVED" | "MEDIA_AUTO_APPROVED":
             subject_prefix = "Request approved: "
         case "MEDIA_FAILED":
             subject_prefix = "Request failed: "
